@@ -21,8 +21,8 @@ public class TicketRepository {
     }
     @Transactional
     public Ticket selectByCNPandTicket(String cnp, String ticketNumber){
-        return (Ticket) entityManager.createQuery("SELECT ticketNumber, cnp FROM Ticket WHERE ticketNumber = '"
+        return entityManager.createQuery("SELECT ticketNumber, cnp FROM Ticket WHERE ticketNumber = '"
                 + ticketNumber + "' AND cnp = '"
-                + cnp + "'").getSingleResult();
+                + cnp + "'", Ticket.class).getSingleResult();
     }
 }
